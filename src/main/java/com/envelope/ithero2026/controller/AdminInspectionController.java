@@ -8,12 +8,13 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-import static com.envelope.ithero2026.controller.ControllerNames.*;
+import static com.envelope.ithero2026.controller.ControllerNames.ADMIN_INSPECTION;
+import static com.envelope.ithero2026.controller.ControllerNames.LOAD_INSPECTION_BY_MASTER;
 
 @RestController
-@RequestMapping(INSPECTION)
+@RequestMapping(ADMIN_INSPECTION)
 @RequiredArgsConstructor
-public class InspectionController
+public class AdminInspectionController
 {
     private final InspectionService service;
 
@@ -42,33 +43,9 @@ public class InspectionController
         service.delete(id);
     }
 
-    @GetMapping(BY_PERFORMER)
-    List<InspectionDTO> loadByPerformer(@RequestParam(required = false) Long performerId)
-    {
-        return service.loadByPerformer(performerId);
-    }
-
-    @GetMapping(BY_MASTER)
+    @GetMapping(LOAD_INSPECTION_BY_MASTER)
     List<InspectionDTO> loadByMaster(@RequestParam(required = false) Long masterId)
     {
         return service.loadByMaster(masterId);
-    }
-
-    @PutMapping(FINISH)
-    void finish(@RequestBody InspectionDTO dto)
-    {
-        service.finish(dto);
-    }
-
-    @PutMapping(PREPARE)
-    InspectionDTO prepareToInspect(@RequestParam long id)
-    {
-        return service.prepareForInspection(id);
-    }
-
-    @PostMapping(REQUEST_INCIDENT)
-    void requestIncident(InspectionDTO dto)
-    {
-        service.create(dto);
     }
 }
