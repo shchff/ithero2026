@@ -2,11 +2,13 @@ package com.envelope.ithero2026.domain;
 
 import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.Setter;
 
 import java.time.Instant;
 
 @Entity
 @Getter
+@Setter
 public class Inspection
 {
     @Id
@@ -29,4 +31,7 @@ public class Inspection
     @ManyToOne
     @JoinColumn(name = "master_id", nullable = false)
     private User master;
+
+    @Enumerated(EnumType.STRING)
+    private InspectionStatus status;
 }

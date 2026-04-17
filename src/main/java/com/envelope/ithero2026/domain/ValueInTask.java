@@ -1,10 +1,14 @@
 package com.envelope.ithero2026.domain;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
 @Table(name = "values_in_task",
         uniqueConstraints = @UniqueConstraint(columnNames = {"reference_id", "task_id"}))
+@Getter
+@Setter
 public class ValueInTask
 {
     @Id
