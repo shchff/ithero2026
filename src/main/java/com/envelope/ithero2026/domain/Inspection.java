@@ -19,6 +19,9 @@ public class Inspection
     @Column(name = "end_time")
     private Instant endTime;
 
+    @Enumerated(EnumType.STRING)
+    private InspectionType type;
+
     @ManyToOne
     @JoinColumn(name = "performer_id", nullable = false)
     private User performer;
